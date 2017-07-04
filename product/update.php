@@ -18,17 +18,17 @@ $db = $database->getConnection();
 $product = new Product($db);
  
 // get id of product to be edited
-// $data = json_decode(file_get_contents("php://input"));
+$data = json_decode(file_get_contents("php://input"));
  
 // set ID property of product to be edited
-$product->id = "74";
+$product->id = $data->id;
  
 // set product property values
-$product->name ="ap";
-$product->price = "50";
-$product->description = "ss";
-$product->category_id = "90";
- 
+$product->name = $data->name;
+$product->price = $data->price;
+$product->description = $data->description;
+$product->category_id = $data->category_id;
+ $product->created = date('Y-m-d H:i:s');
 // update the product
 if($product->update()){
     echo '{';

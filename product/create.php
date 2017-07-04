@@ -18,21 +18,13 @@ $db = $database->getConnection();
 $product = new Product($db);
  
 // get posted data
-// $myObj->name = "John";
-// $myObj->price = 30;
-// $myObj->description = "New York";
-// $myObj->category_id = 80;
-
-// $data = json_encode($myObj);
-
-
-
+$data = json_decode(file_get_contents("php://input"));
  
 // set product property values
-$product->name = "harsh";
-$product->price = "40";
-$product->description = "student";
-$product->category_id = "89";
+$product->name = $data->name;
+$product->price = $data->price;
+$product->description = $data->desc;
+$product->category_id = $data->category_id;
 $product->created = date('Y-m-d H:i:s');
  
 // create the product

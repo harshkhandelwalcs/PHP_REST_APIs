@@ -31,7 +31,7 @@ function read(){
                     categories c
                         ON p.category_id = c.id
             ORDER BY
-                p.created DESC";
+                p.created asc";
  
     // prepare query statement
     $stmt = $this->conn->prepare($query);
@@ -66,8 +66,8 @@ function create(){
     $stmt->bindParam(":description", $this->description);
     $stmt->bindParam(":category_id", $this->category_id);
     $stmt->bindParam(":created", $this->created);
- 
-    // execute query
+  
+  //  execute query
     if($stmt->execute()){
         return true;
     }else{
